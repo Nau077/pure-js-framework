@@ -1,4 +1,4 @@
-const CODES = {
+export const CODES = {
 	'A' : 65,
 	'Z' : 90
 }
@@ -7,12 +7,11 @@ function toCell(rowNumber) {
 
 	return function (cell) {
 		return `
-			<div class="cell" contentitable data-letter="${cell}" data-selected="${cell}:${rowNumber}">
+			<div class="cell" contentitable data-letter="${cell}" data-selected="${cell}:${rowNumber+1}">
 				<div data-cellresize="${cell}"></div>
 			</div>
 		`
 	}
-
 }
 
 function toColumn(col) {

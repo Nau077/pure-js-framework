@@ -6,8 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "cross-env NODE_ENV=development webpack-dev-server --open",
-    "lint": "eslint --ext .js src",
-    "lint:fix": "eslint --fix --ext .js src",
+    "lint": "eslint ./src --ext .js",
+    "lint:fix": "eslint --fix ./src --ext .js",
     "build": "cross-env NODE_ENV=production webpack --mode production"
   },
   "repository": {
@@ -20,22 +20,6 @@
     "microsoftOffice",
     "excel"
   ],
-  "eslintConfig": {
-    "extends": [
-      "eslint:recommended"
-    ],
-    "rules": {
-      "semi": [
-        "error",
-        "always"
-      ],
-      "no-console": "warn",
-      "object-curly-spacing": [
-        "error",
-        "always"
-      ]
-    }
-  },
   "author": "Roman Tolokontsev",
   "private": true,
   "browserslist": "> 0.25%, not dead",

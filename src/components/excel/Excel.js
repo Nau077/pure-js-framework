@@ -31,7 +31,8 @@ export class Excel {
     // вставить div (например, excel) в селектор app
     this.$el.append(this.getRoot())
     this.components.forEach(component => {
-      component.initDomListeners()    
+      component.toPrepare()
+      component.initDomListeners()
     });
   }
 }

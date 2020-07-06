@@ -21,17 +21,10 @@ const jsLoaders = () => {
   ]
 
   if (isDev) {
-    loaders.push({
-        test: /\.js/, // both .js and .jsx
-        loader: 'eslint-loader',
-        include: path.resolve(process.cwd(), 'src'),
-        enforce: 'pre',
-        options: {
-          fix: true,
-        },
-  	})
-	}
-	return loaders
+    loaders.push('eslint-loader')
+  }
+
+  return loaders
 }
 
 module.exports = {

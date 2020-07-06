@@ -1,5 +1,5 @@
 import {ExcelComponent} from '@core/ExcelComponent'
-import {createTable} from './table.template'
+import {createTable} from './table-template'
 import {tableResize} from './table-resize'
 import {TableSelected} from '@/components/table/TableSelected'
 
@@ -13,21 +13,27 @@ export class Table extends ExcelComponent {
   }
 
   toPrepare() {
+	const tableSelect = new TableSelected(this.$root)
+	tableSelect.initSelect()
   }
 
   toHTML() {
-    return createTable(30)
+    return createTable(26)
   }
 
   onMousedown(e) {
 	 if (e.target.dataset.resize) {
 		 tableResize(this.$root, e)
-	 } else if (e.target.dataset.selected && e.shiftKey){
-		 const tableSelect = new TableSelected(this.$root, e)
-		 tableSelect.groupSelect()
-	 } else if (e.target.dataset.selected) {
-		const tableSelected = new TableSelected(this.$root, e)
-		tableSelected.select()
+	 }
+	 
+	 if (e.target.dataset.selected) {
+		const tableSelect = new TableSelected(this.$root, e)
+
+		if (e.shiftKey) {
+			tableSelect.groupSelect()
+		} else {
+			tableSelect.select()
+		}
 	 }
   }
 
